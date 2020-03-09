@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Animations Template</title>
+	<!-- Internal Css -->
+	<style>
+		html, 
+		body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+
+		h1 {
+			color: white;
+			padding: 20px;
+		}
+
+		.element {
+			/* Instructing the div to fill the body and html */
+			width: 100%;
+			height: 100%;
+			/* (1.) Animation shorthand *What keyframe animation, time of animation, direction of animation*/
+			/*animation: pulse 12s infinite alternate;*/
+			z-index: 5;
+			display: block;
+			position: relative;
+			/* (1.) Animation shorthand *What keyframe animation, time of animation, direction of animation*/
+			animation: pulse 12s infinite alternate;
+			opacity: 0;
+		}
+
+		/* (1.)  Created an animation keyframe state 'pulse' for background color change */
+		@keyframes pulse {
+
+			0% {
+				background-color: red;
+			}
+
+			50% {
+				background-color: yellow;
+			}
+
+			75% {
+				background-color: blue;
+			}
+
+			100% {
+				background-color: black; 
+			}
+
+		}  /* Keyframes END */
+		
+		/* This is looking for the image inside of .element */
+		.sun-image {
+			position: absolute;
+			bottom: -15%;
+			/* (2.) Transition is the easiest animation control in css - choose a property - 'bottom' and 
+			a time to animate it, then change it on an event, like hover below. */
+			transition: bottom 25s;
+			border-radius: 80%;
+			width: 280px;
+			z-index: 15;
+			left: 0%;
+		}
+
+		.sun-image:hover {
+			/* (2.) Here we are animating the 'bottom' property from above */
+			bottom: 74%;
+
+			/* (3.) These animation properties relate to the 'spin' keyframe animation state below*/
+			animation-name: spin;
+			animation-duration: 4500ms;
+			animation-iteration-count: infinite;
+			animation-timing-function: linear;
+		}
+
+		.moon-image {
+			position: absolute;
+			bottom: -15%;
+			/* (2.) Transition is the easiest animation control in css - choose a property - 'bottom' and 
+			a time to animate it, then change it on an event, like hover below. */
+			transition: bottom 25s;
+			border-radius: 80%;
+			width: 240px;
+			z-index: 15;
+			right: 2%;	
+			width: 180px;
+		}
+
+		.moon-image:hover {
+			/* (2.) Here we are animating the 'bottom' property from above */
+			bottom: 74%;
+
+			/* (3.) These animation properties relate to the 'spin' keyframe animation state below*/
+			animation-name: spinB;
+			animation-duration: 4500ms;
+			animation-iteration-count: infinite;
+			animation-timing-function: linear;
+		}
+		
+		/* (3.) This relates to the animation properties under (3.) in the sun-image:hover div */
+		@keyframes spin {
+			from {
+				transform:rotate(0deg);
+			}
+
+			to {
+				transform: rotate(360deg);
+			}
+		}
+
+		@keyframes spinB {
+			from {
+				transform:rotate(360deg);
+			}
+
+			to {
+				transform: rotate(0deg);
+			}
+		}
+
+		@keyframes move-twink-back {
+		    from {background-position:0 0;}
+		    to {background-position:-10000px 5000px;}
+		}
+		@-webkit-keyframes move-twink-back {
+		    from {background-position:0 0;}
+		    to {background-position:-10000px 5000px;}
+		}
+		@-moz-keyframes move-twink-back {
+		    from {background-position:0 0;}
+		    to {background-position:-10000px 5000px;}
+		}
+		@-ms-keyframes move-twink-back {
+		    from {background-position:0 0;}
+		    to {background-position:-10000px 5000px;}
+		}
+
+		@keyframes move-clouds-back {
+		    from {background-position:0 0;}
+		    to {background-position:10000px 0;}
+		}
+		@-webkit-keyframes move-clouds-back {
+		    from {background-position:0 0;}
+		    to {background-position:10000px 0;}
+		}
+		@-moz-keyframes move-clouds-back {
+		    from {background-position:0 0;}
+		    to {background-position:10000px 0;}
+		}
+		@-ms-keyframes move-clouds-back {
+		    from {background-position: 0;}
+		    to {background-position:10000px 0;}
+		}
+
+		.stars, .twinkling, .clouds {
+		  position:absolute;
+		  top:0;
+		  left:0;
+		  right:0;
+		  bottom:0;
+		  width:100%;
+		  height:100%;
+		  display:block;
+		}
+
+		.stars {
+		  background:#000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+		  z-index:0;
+		}
+
+		.twinkling{
+		  background:transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+		  z-index:1;
+		  -moz-animation:move-twink-back 200s linear infinite;
+		  -ms-animation:move-twink-back 200s linear infinite;
+		  -o-animation:move-twink-back 200s linear infinite;
+		  -webkit-animation:move-twink-back 200s linear infinite;
+		  animation:move-twink-back 200s linear infinite;
+		}
+
+		.signs {
+			z-index: 8;
+			position: absolute;
+			top: 0px;
+			width: 70%;
+			left:0;
+			right:0;
+			bottom:0;
+			margin:auto;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="element"></div>
+
+	<div class="twinkling"></div>
+	<div class="stars"></div>
+	<img src="sun-a.png" alt="" class="sun-image">
+	<img src="signs.png" alt="" class="signs">
+	<img src="moon.png" alt="" class="moon-image">
+
+</body>
+</html>
